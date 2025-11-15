@@ -116,8 +116,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 Map.of(
                         "timestamp", Instant.now().toString(),
                         "status", status,
-                        "error", HttpStatus.valueOf(status).getReasonPhrase(),
-                        "message", message
+                        "error", HttpStatus.valueOf(status).getReasonPhrase()
                 ),
                 false
         );
