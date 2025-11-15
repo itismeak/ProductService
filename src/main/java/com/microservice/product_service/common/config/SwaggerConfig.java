@@ -21,7 +21,7 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("Product Service API")
                         .version("1.0.0")
-                        .description("API documentation for the Product microservice")
+                        .description("API documentation for the Product Service microservice")
                         .contact(new Contact()
                                 .name("Your Name or Team")
                                 .email("your.email@example.com")
