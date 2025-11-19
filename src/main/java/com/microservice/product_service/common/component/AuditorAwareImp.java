@@ -1,7 +1,9 @@
 package com.microservice.product_service.common.component;
 
 import org.springframework.data.domain.AuditorAware;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.security.core.Authentication;
 
 import java.util.Optional;
 
@@ -10,10 +12,14 @@ public class AuditorAwareImp implements AuditorAware<String> {
 
     @Override
     public Optional<String> getCurrentAuditor() {
-        //If you have Spring Security, you can replace "system"
-        // with SecurityContextHolder.getContext().getAuthentication().getName().
+         Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
 
-        // In real apps, fetch the logged-in username from Spring Security
-        return Optional.of("system"); // default/fallback
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return Optional.of("system");
+        }
+
+        // authentication.getName() returns email from JwtAuthFilter
+        return Optional.ofNullable(authentication.getName());
     }
 }
