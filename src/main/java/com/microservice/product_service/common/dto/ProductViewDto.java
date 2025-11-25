@@ -2,12 +2,16 @@ package com.microservice.product_service.common.dto;
 
 import com.microservice.product_service.common.enums.ProductCategory;
 import com.microservice.product_service.common.enums.ProductStatus;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductViewDto {
 
     private Long id;
