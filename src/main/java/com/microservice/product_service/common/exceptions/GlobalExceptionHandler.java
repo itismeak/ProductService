@@ -45,7 +45,16 @@ public class GlobalExceptionHandler {
 
         return buildResponse("Internal server error", cleanMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiResponse<?>> handleResourceNotFoundException(ResourceNotFoundException ex) {
+        log.warn("Resource not found: {}", ex.getMessage());
 
+        return buildResponse(
+                "Resource not found",
+                ex.getMessage(),
+                HttpStatus.NOT_FOUND
+        );
+    }
     // 🔹 Reusable method to build ApiResponse
     private ResponseEntity<ApiResponse<?>> buildResponse(String message, Object errorDetails, HttpStatus status) {
         Map<String, Object> data = Map.of(
