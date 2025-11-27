@@ -1,11 +1,11 @@
 package com.microservice.product_service.common.client.consumer;
 
-import com.microservice.product_service.common.dto.OrderSaveEvent;
 import com.microservice.product_service.common.exceptions.ResourceNotFoundException;
 import com.microservice.product_service.module.product.entity.Product;
 import com.microservice.product_service.module.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.events.OrderSaveEvent;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
