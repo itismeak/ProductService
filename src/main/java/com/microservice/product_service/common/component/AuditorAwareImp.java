@@ -19,7 +19,6 @@ public class AuditorAwareImp implements AuditorAware<String> {
             return Optional.of("system");
         }
 
-        // authentication.getName() returns email from JwtAuthFilter
         return Optional.ofNullable(authentication.getName());
     }
 }
